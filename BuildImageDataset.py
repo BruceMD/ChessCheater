@@ -17,10 +17,31 @@ def labelDic(name):
         "queen_w": 8,
         "queen_b": 9,
         "king_w": 10,
-        "king_b": 11
-    }
+        "king_b": 11}
+
     try:
         return dic[name]
+    except KeyError:
+        return None
+
+
+def revLabelDic(index):
+    dic = {
+        0: "pawn_w",
+        1: "pawn_b",
+        2: "knight_w",
+        3: "knight_b",
+        4: "bishop_w",
+        5: "bishop_b",
+        6: "rook_w",
+        7: "rook_b",
+        8: "queen_w",
+        9: "queen_b",
+        10: "king_w",
+        11: "king_b"}
+
+    try:
+        return dic[index]
     except KeyError:
         return None
 
