@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="060253c9-d5c1-4d67-a8e0-2a1c503d9623" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildImageDataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/BuildImageDataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IdentifyChessPieces.py" beforeDir="false" afterPath="$PROJECT_DIR$/IdentifyChessPieces.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chess_piece_classifier.model/saved_model.pb" beforeDir="false" afterPath="$PROJECT_DIR$/chess_piece_classifier.model/saved_model.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chess_piece_classifier.model/variables/variables.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/chess_piece_classifier.model/variables/variables.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chess_piece_classifier.model/variables/variables.index" beforeDir="false" afterPath="$PROJECT_DIR$/chess_piece_classifier.model/variables/variables.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -6,6 +6,8 @@ from tensorflow.python.keras import layers, models
 from keras.datasets import cifar10
 from random import randint
 from BuildImageDataset import labelDic, revLabelDic
+from keras.preprocessing.image import ImageDataGenerator
+import scipy
 
 
 def buildModel():
@@ -18,7 +20,19 @@ def buildModel():
     training_images = training_images / 255
     testing_images = testing_images / 255
 
-    print(testing_images)
+    datagen = ImageDataGenerator(
+        featurewise_center=False,
+        samplewise_center=False,
+        featurewise_std_normalization=False,
+        samplewise_std_normalization=False,
+        zca_whitening=False,
+        rotation_range=10,
+        zoom_range=0.2,
+        width_shift_range=0.2,
+        height_shift_range=0.2,
+        horizontal_flip=True,
+        vertical_flip=False)
+    batchSize = 1
 
     model = models.Sequential()
 
@@ -40,6 +54,8 @@ def buildModel():
     print(model.summary())
 
     model.fit(training_images, training_labels, epochs=10, validation_data=(testing_images, testing_labels))
+    # model.fit(datagen.flow(training_images, training_labels, batch_size=batchSize), epochs=10,
+    #           steps_per_epoch=training_images.shape[0] // batchSize, validation_data=(testing_images, testing_labels))
 
     loss, accuracy = model.evaluate(testing_images, testing_labels)
     print("Loss: {}".format(loss))
@@ -69,22 +85,21 @@ def loadModel():
 
     for i in range(5):
         num = randint(0, testing_labels.size)
-        # print(num)
 
         prediction = identify.predict(np.array([testing_images[num]]))
         index = np.argmax(prediction)
 
         # show the image
-        # plt.subplot(1, 2, 1)
+        plt.subplot(1, 2, 1)
         plt.imshow(testing_images[num])
         plt.xticks([])
         plt.yticks([])
         plt.xlabel(revLabelDic(index))
 
         # show the graph scoring
-        # plt.subplot(1, 2, 2)
-        # plt.bar(dic, prediction[0])
-        # plt.xlabel("Class names")
-        # plt.ylabel("Class scores")
+        plt.subplot(1, 2, 2)
+        plt.bar(dic, prediction[0])
+        plt.xlabel("Class names")
+        plt.ylabel("Class scores")
 
         plt.show()
