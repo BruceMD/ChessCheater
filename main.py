@@ -15,8 +15,9 @@ def main():
     # BuildImageDataset.createTestingDataset()         # create a numpy array of images
     # # BuildImageDataset.loadDataset()             # load the numpy array, probably remove in future
     #
-    IdentifyChessPieces.buildModel()
-    IdentifyChessPieces.loadModel()
+    # IdentifyChessPieces.buildModel()
+    # IdentifyChessPieces.loadModel()
+    IdentifyChessPieces.displayTesting()
 
 
 if __name__ == '__main__':

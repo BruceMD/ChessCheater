@@ -83,7 +83,7 @@ def loadModel():
     testing_images = np.load("testing_images.npy")
     testing_labels = np.load("testing_labels.npy")
 
-    for i in range(5):
+    for i in range(10):
         num = randint(0, testing_labels.size)
 
         prediction = identify.predict(np.array([testing_images[num]]))
@@ -103,3 +103,32 @@ def loadModel():
         plt.ylabel("Class scores")
 
         plt.show()
+
+
+def displayTesting():
+
+    dic = [
+        "pawn_w",
+        "pawn_b",
+        "knight_w",
+        "knight_b",
+        "bishop_w",
+        "bishop_b",
+        "rook_w",
+        "rook_b",
+        "queen_w",
+        "queen_b",
+        "king_w",
+        "king_b"]
+    identify = models.load_model("chess_piece_classifier.model")
+
+    testing_images = np.load("testing_images.npy")
+    testing_labels = np.load("testing_labels.npy")
+
+    for i in range(len(testing_images)):
+        plt.subplot(4, 6, i+1)
+        plt.imshow(testing_images[i])
+        plt.xlabel(revLabelDic(testing_labels[i]))
+        plt.xticks([])
+        plt.yticks([])
+    plt.show()
