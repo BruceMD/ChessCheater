@@ -16,6 +16,7 @@ def main():
     # # BuildImageDataset.loadDataset()             # load the numpy array, probably remove in future
     #
     IdentifyChessPieces.buildModel()
+    IdentifyChessPieces.loadModel()
 
 
 if __name__ == '__main__':
