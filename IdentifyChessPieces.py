@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from tensorflow.python.keras import layers, models
 from keras.datasets import cifar10
 from random import randint
+from BuildImageDataset import labelDic, revLabelDic
 
 
 def buildModel():
@@ -14,11 +15,10 @@ def buildModel():
     testing_images = np.load("testing_images.npy")
     testing_labels = np.load("testing_labels.npy")
 
-    print(training_images.shape)
-    print(testing_images.shape)
-    print()
+    training_images = training_images / 255
+    testing_images = testing_images / 255
 
-    # class_names = ["Plane", "Car", "Bird", "Cat", "Deer", "Dog", "Frog", "Horse", "Ship", "Truck"]
+    print(testing_images)
 
     model = models.Sequential()
 
@@ -48,9 +48,43 @@ def buildModel():
     model.save("chess_piece_classifier.model")
 
 
-def trainingData():
-    pass
-# what's probably going to happen is that the training data will mostly be the same as the testing data
-# the types of pieces are very finite as is
-# get collection of all images, then scale them to all be the same size 80X80 pxels
+def loadModel():
+    dic = [
+        "pawn_w",
+        "pawn_b",
+        "knight_w",
+        "knight_b",
+        "bishop_w",
+        "bishop_b",
+        "rook_w",
+        "rook_b",
+        "queen_w",
+        "queen_b",
+        "king_w",
+        "king_b"]
+    identify = models.load_model("chess_piece_classifier.model")
 
+    testing_images = np.load("testing_images.npy")
+    testing_labels = np.load("testing_labels.npy")
+
+    for i in range(5):
+        num = randint(0, testing_labels.size)
+        # print(num)
+
+        prediction = identify.predict(np.array([testing_images[num]]))
+        index = np.argmax(prediction)
+
+        # show the image
+        # plt.subplot(1, 2, 1)
+        plt.imshow(testing_images[num])
+        plt.xticks([])
+        plt.yticks([])
+        plt.xlabel(revLabelDic(index))
+
+        # show the graph scoring
+        # plt.subplot(1, 2, 2)
+        # plt.bar(dic, prediction[0])
+        # plt.xlabel("Class names")
+        # plt.ylabel("Class scores")
+
+        plt.show()
