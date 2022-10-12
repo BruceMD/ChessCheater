@@ -11,28 +11,18 @@ def findGrid():
     print(screenImage.shape)
 
     cellColour = np.array([49, 46, 43])  # assume this grey
-    maxSide = min(screenImage.shape[0], screenImage.shape[1])  # find the largest possible side for the square
-    minSide = 400  # minimum acceptance
-    print(screenImage[165][2220] == cellColour)
-    print(array_equal(screenImage[165][2220], cellColour))
-
-    counter = 0
 
     for y in range(screenImage.shape[0] - 401):
         for x in range(screenImage.shape[1] - 401):
             if array_equal(screenImage[y][x], cellColour):
                 if findCorner(y, x, screenImage, cellColour):
-                    counter += 1
-                    print("Cool, we found corner {}".format(counter))
                     side = expand(y, x, screenImage, cellColour)
                     if side >= 400:
                         if checkPerimeter(y, x, screenImage, cellColour, side):
-                            print(x, y)
                             subImage = np.array(screenImage[y:y + side, x:x + side])
-                            print(subImage.shape)
                             plt.imshow(subImage)
                             plt.show()
-                            return y, x, side
+                            return y+1, x+1, side, screenImage
 
 
 def checkPerimeter(y, x, screenImage, cellColour, side):
