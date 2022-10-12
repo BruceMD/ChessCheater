@@ -7,7 +7,10 @@ import BuildImageDataset
 def main():
 
     pass
-    # CaptureScreen.capture()
+    CaptureScreen.findGrid()
+    # CaptureScreen.saveCornersNumpy()
+    # CaptureScreen.locate()
+    # CaptureScreen.clearDirectory()
     # ReadImageDemo.buildModel()                    # build machine model and save
     # ReadImageDemo.loadModel()                 # load model and make predictions
 
@@ -17,7 +20,7 @@ def main():
     #
     # IdentifyChessPieces.buildModel()
     # IdentifyChessPieces.loadModel()
-    IdentifyChessPieces.displayTesting()
+    # IdentifyChessPieces.displayTesting()
 
 
 if __name__ == '__main__':

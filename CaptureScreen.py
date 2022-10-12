@@ -1,4 +1,3 @@
-import datetime
 import os
 
 import numpy as np
@@ -7,9 +6,17 @@ from time import sleep
 import matplotlib.pyplot as plt
 
 
+def findGrid():
+    screenImage = np.array(pag.screenshot())
+
+    cellColour = [49, 46, 43]                                           # assume this grey
+    maxSide = min(screenImage.shape[0], screenImage.shape[1])           # find the largest possible side for the square
+    print(screenImage[165][2220])
+
+
 def saveCornersNumpy():
 
-    screenImage = capture()
+    screenImage = pag.screenshot()
 
     topLeft = screenImage.crop(box=(2220, 165, 2230, 175))
     topRight = screenImage.crop(box=(3028, 165, 3038, 175))
@@ -30,22 +37,6 @@ def saveCornersNumpy():
     plt.subplot(2, 2, 4)
     plt.imshow(bottomRight)
     plt.show()
-
-
-def capture():
-
-    print(pag.size())
-
-    timeFormat = '%y%m%d%H%M%S'
-
-    screenImage = pag.screenshot()
-    # probably won't have to save the image but let's keep it around for now anyway
-    screenImage.save(r"Images/ss{}.png".format(datetime.datetime.now().strftime(timeFormat)))
-
-    print(screenImage.size)
-    print(type(screenImage))
-
-    return screenImage
 
 
 def locate():

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="060253c9-d5c1-4d67-a8e0-2a1c503d9623" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaptureScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/CaptureScreen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/ss221007093258.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +40,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Corners" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
