@@ -33,7 +33,7 @@ def buildModel():
 
     model.add(layers.Flatten())         # converts it all into a 1D array (150, 150, 3) -> 67 500
 
-    model.add(layers.Dense(96, activation="relu"))
+    model.add(layers.Dense(104, activation="relu"))          # potentially make this 104 = 13 * 8
     model.add(layers.Dense(13, activation="softmax"))
 
     model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
@@ -51,71 +51,20 @@ def buildModel():
 
 
 def loadModel():
-    dic = [
-        "pawn_w",
-        "pawn_b",
-        "knight_w",
-        "knight_b",
-        "bishop_w",
-        "bishop_b",
-        "rook_w",
-        "rook_b",
-        "queen_w",
-        "queen_b",
-        "king_w",
-        "king_b",
-        "empty"]
     identify = models.load_model("chess_piece_classifier.model")
 
     testing_images = np.load("testing_images.npy")
-    testing_labels = np.load("testing_labels.npy")
+    print(testing_images.shape)
 
-    for i in range(10):
-        num = randint(0, testing_labels.size)
-
+    for num in range(testing_images.shape[0]):
         prediction = identify.predict(np.array([testing_images[num]]))
         index = np.argmax(prediction)
 
         # show the image
-        plt.subplot(1, 2, 1)
+        plt.subplot(7, 4, num+1)
         plt.imshow(testing_images[num])
         plt.xticks([])
         plt.yticks([])
         plt.xlabel(revLabelDic(index))
 
-        # show the graph scoring
-        plt.subplot(1, 2, 2)
-        plt.bar(dic, prediction[0])
-        plt.xlabel("Class names")
-        plt.ylabel("Class scores")
-
-        plt.show()
-
-
-def displayTesting():
-
-    dic = [
-        "pawn_w",
-        "pawn_b",
-        "knight_w",
-        "knight_b",
-        "bishop_w",
-        "bishop_b",
-        "rook_w",
-        "rook_b",
-        "queen_w",
-        "queen_b",
-        "king_w",
-        "king_b"]
-    identify = models.load_model("chess_piece_classifier.model")
-
-    testing_images = np.load("testing_images.npy")
-    testing_labels = np.load("testing_labels.npy")
-
-    for i in range(len(testing_images)):
-        plt.subplot(4, 6, i+1)
-        plt.imshow(testing_images[i])
-        plt.xlabel(revLabelDic(testing_labels[i]))
-        plt.xticks([])
-        plt.yticks([])
     plt.show()
