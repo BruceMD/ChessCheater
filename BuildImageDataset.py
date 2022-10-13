@@ -48,6 +48,7 @@ def revLabelDic(index):
         return None
 
 
+# create the numpy array of training images
 def createTrainingDataset():
     path = "Training_Images"
 
@@ -64,6 +65,7 @@ def createTrainingDataset():
     np.save("training_labels", np.array(training_labels))
 
 
+# create the numpy array of testing images
 def createTestingDataset():
     path = "Testing_Images"
 
@@ -80,6 +82,7 @@ def createTestingDataset():
     np.save("testing_labels", np.array(testing_labels))
 
 
+# visualise dataset
 def loadDataset():
     training_images = np.load("training_images.npy")
     training_images = training_images / 255
