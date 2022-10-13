@@ -17,7 +17,8 @@ def labelDic(name):
         "queen_w": 8,
         "queen_b": 9,
         "king_w": 10,
-        "king_b": 11}
+        "king_b": 11,
+        "empty": 12}
 
     try:
         return dic[name]
@@ -38,7 +39,8 @@ def revLabelDic(index):
         8: "queen_w",
         9: "queen_b",
         10: "king_w",
-        11: "king_b"}
+        11: "king_b",
+        12: "empty"}
 
     try:
         return dic[index]

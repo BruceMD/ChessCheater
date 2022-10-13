@@ -20,20 +20,6 @@ def buildModel():
     training_images = training_images / 255
     testing_images = testing_images / 255
 
-    datagen = ImageDataGenerator(
-        featurewise_center=False,
-        samplewise_center=False,
-        featurewise_std_normalization=False,
-        samplewise_std_normalization=False,
-        zca_whitening=False,
-        rotation_range=10,
-        zoom_range=0.2,
-        width_shift_range=0.2,
-        height_shift_range=0.2,
-        horizontal_flip=True,
-        vertical_flip=False)
-    batchSize = 1
-
     model = models.Sequential()
 
     model.add(layers.Conv2D(filters=32, kernel_size=(3, 3), activation="relu", input_shape=(80, 80, 3)))
@@ -48,7 +34,7 @@ def buildModel():
     model.add(layers.Flatten())         # converts it all into a 1D array (150, 150, 3) -> 67 500
 
     model.add(layers.Dense(96, activation="relu"))
-    model.add(layers.Dense(12, activation="softmax"))
+    model.add(layers.Dense(13, activation="softmax"))
 
     model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
     print(model.summary())
@@ -77,7 +63,8 @@ def loadModel():
         "queen_w",
         "queen_b",
         "king_w",
-        "king_b"]
+        "king_b",
+        "empty"]
     identify = models.load_model("chess_piece_classifier.model")
 
     testing_images = np.load("testing_images.npy")

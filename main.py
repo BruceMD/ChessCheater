@@ -1,10 +1,12 @@
+import ChessBoard
 import ControlGame
+import IdentifyChessPieces
 
 
 def main():
 
-    ControlGame.play()
-
+    # ChessBoard.gamePlay()
+    IdentifyChessPieces.loadModel()
 
 if __name__ == '__main__':
     main()
