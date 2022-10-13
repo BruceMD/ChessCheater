@@ -50,7 +50,7 @@ def buildModel():
     model.save("chess_piece_classifier.model")
 
 
-def loadModel():
+def displayModel():
     identify = models.load_model("chess_piece_classifier.model")
 
     testing_images = np.load("testing_images.npy")
