@@ -8,12 +8,10 @@ import matplotlib.pyplot as plt
 
 def findGrid():
     screenImage = np.array(pag.screenshot())
-    print(screenImage.shape)
-
-    cellColour = np.array([49, 46, 43])  # assume this grey
 
     for y in range(screenImage.shape[0] - 401):
         for x in range(screenImage.shape[1] - 401):
+            cellColour = screenImage[y][x]                      # cannot assume one type of grey
             if array_equal(screenImage[y][x], cellColour):
                 if findCorner(y, x, screenImage, cellColour):
                     side = expand(y, x, screenImage, cellColour)
