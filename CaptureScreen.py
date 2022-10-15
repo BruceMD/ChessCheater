@@ -17,7 +17,7 @@ def findGrid():
                     side = expand(y, x, screenImage, cellColour)
                     if side >= 400:
                         if checkPerimeter(y, x, screenImage, cellColour, side):
-                            subImage = np.array(screenImage[y:y + side, x:x + side])
+                            # subImage = np.array(screenImage[y:y + side, x:x + side])
                             # plt.imshow(subImage)
                             # plt.show()
                             return y+1, x+1, side

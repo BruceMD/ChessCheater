@@ -1,3 +1,5 @@
+import datetime
+
 import numpy as np
 from tensorflow.python.keras import models
 from time import sleep
@@ -40,29 +42,31 @@ class ChessBoard:
     def __init__(self):
         self.board = [['__' for i in range(8)] for i in range(8)]
         self.grid = CaptureScreen.findGrid()  # Locate co-ordinates of the chessboard on screen
-        self.screenImage = self.captureScreen()
+        self.screenImage = None
         self.update = False
 
     def captureScreen(self):  # return the screen in 640X640 pixels in numpy array
-        print("CAPTURE!")
+        # print("CAPTURE!")
+        timeFormat = '%y%m%d%H%M%S'
         screenImage = pag.screenshot(region=(self.grid[1], self.grid[0], self.grid[2], self.grid[2]))
-        return np.array(screenImage.resize([640, 640]))
+        screenImage.save("Images/ss{}.png".format(datetime.datetime.now().strftime(timeFormat)))
+        self.screenImage = np.array(screenImage.resize([640, 640]))
 
     def updateBoard(self):
-        print("UPDATE")
+        # print("UPDATE")
         identify = models.load_model("chess_piece_classifier.model")
         for i in range(8):
             for j in range(8):
                 subImage = self.screenImage[i * 80:(i + 1) * 80, j * 80:(j + 1) * 80]
                 prediction = identify.predict(np.array([subImage]))
                 piece = indexPiece((np.argmax(prediction)))
-                if piece != self.board[i][j]:
+                if piece != self.board[i][j] and not self.update:
                     self.update = True
-                    print("CHANGE")
+                    # print("CHANGE")
                 self.board[i][j] = piece
 
     def checkBoard(self):
-        print("Check {}".format(self.update))
+        # print("Check {}".format(self.update))
         if self.update:
             for row in self.board:
                 print(row)
@@ -72,6 +76,7 @@ class ChessBoard:
 
 def gamePlay():
     board = ChessBoard()  # initiate the board
+    # sleep(3)
     print("START")
 
     while True:
