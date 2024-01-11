@@ -1,12 +1,12 @@
-import BuildImageDataset
 import ChessBoard
-import ControlGame
 import IdentifyChessPieces
 
 
 def main():
 
-    ChessBoard.gamePlay()
+    # ChessBoard.gamePlay()
+    # IdentifyChessPieces.displayModel()
+    IdentifyChessPieces.build_model()
 
 
 if __name__ == '__main__':

@@ -46,14 +46,14 @@ class ChessBoard:
         self.update = False
 
     def captureScreen(self):  # return the screen in 640X640 pixels in numpy array
-        # print("CAPTURE!")
+        print("CAPTURE!")
         timeFormat = '%y%m%d%H%M%S'
         screenImage = pag.screenshot(region=(self.grid[1], self.grid[0], self.grid[2], self.grid[2]))
         screenImage.save("Images/ss{}.png".format(datetime.datetime.now().strftime(timeFormat)))
         self.screenImage = np.array(screenImage.resize([640, 640]))
 
     def updateBoard(self):
-        # print("UPDATE")
+        print("UPDATE!")
         identify = models.load_model("chess_piece_classifier.model")
         for i in range(8):
             for j in range(8):
@@ -66,7 +66,7 @@ class ChessBoard:
                 self.board[i][j] = piece
 
     def checkBoard(self):
-        # print("Check {}".format(self.update))
+        print("Check {}".format(self.update))
         if self.update:
             for row in self.board:
                 print(row)
