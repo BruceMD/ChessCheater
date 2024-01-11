@@ -1,11 +1,10 @@
-import ChessBoard
+# import ChessBoard
 import IdentifyChessPieces
 
 
 def main():
 
     # ChessBoard.gamePlay()
-    # IdentifyChessPieces.displayModel()
     IdentifyChessPieces.build_model()
 
 
