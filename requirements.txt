@@ -1,0 +1,7 @@
+numpy~=1.26.0
+PyAutoGUI~=0.9.54
+tensorflow~=2.15.0
+matplotlib~=3.8.2
+keras~=3.0.2
+scipy~=1.11.4
+pillow~=10.2.0
